@@ -2,7 +2,7 @@ name: Auto-merge PR
 
 # 用途：同仓库分支发起的 PR 打开/重新打开时，自动 squash 合并并删除分支。
 # 配合 "分支 → PR → 自动合" 流程，替代直推默认分支。
-# 首次落地：本文件需先直接提交到默认分支（bootstrap），之后同类 PR 即可被本工作流自动合并。
+# 注意：必须先 checkout，否则 gh pr merge 会因 runner 工作目录无 .git 而失败。
 
 on:
   pull_request:
@@ -17,6 +17,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
+      - uses: actions/checkout@v4
       - name: Squash-merge PR
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
