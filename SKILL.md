@@ -43,7 +43,11 @@ metadata:
 ├── SKILL.md                    # 本文件 — 整合版技能描述
 ├── lib/
 │   ├── __init__.py
-│   └── db.py                   # 数据库连接（环境变量驱动）
+│   ├── db.py                   # 数据库连接（环境变量驱动）
+│   ├── anomaly.py              # 5层异常判定内核（阈值/变化率/趋势/MAD/相关性）
+│   ├── quality.py              # 4维度质量评分内核（完成/及时/缺陷/覆盖率）
+│   ├── defect_predict.py       # 缺陷趋势预测内核（线性/季节/贝叶斯热点）
+│   └── route_opt.py            # 路线优化内核（聚类/时间均衡/优先级）
 ├── impl/                       # 可执行分析工具
 │   ├── inspection_analyzer.py  # 15维度异常检测引擎
 │   ├── inspection_tool.py      # 质量评分/缺陷预测/路线优化
